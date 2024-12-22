@@ -1,0 +1,7 @@
+file_input: (_NEWLINE | stmt)*
+
+_NEWLINE: ( /\r?\n[\t ]*/ | COMMENT )+
+%ignore COMMENT
+COMMENT: /\/\/[^\n]*/
+?stmt: simple_stmt | compound_stmt
+?simple_stmt: small_stmt (";" small_stmt)* [";"] _NEWLINE
